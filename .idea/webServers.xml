@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="151c5654-f7e6-4ed8-a90b-93381affd314" name="labcpu" url="http://10.108.218.191">
+        <fileTransfer host="10.108.218.191" port="22" rootFolder="/home/user01/dyq/deeplearning" accessType="SFTP">
+          <advancedOptions>
+            <advancedOptions controlEncoding="utf-8" dataProtectionLevel="Private" />
+          </advancedOptions>
+          <option name="port" value="22" />
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>
