@@ -94,7 +94,7 @@ if __name__ == '__main__':
 
     args, unknown = get_common_args()
     # -1 means cpu, else the gpu index 0,1,2,3
-    args.device = 1
+    args.device = -1
     print("args : " + str(args))
     print("unknown args : " + str(unknown))
 
@@ -123,7 +123,7 @@ if __name__ == '__main__':
             torch.cuda.set_device(args.device)
             model = model.cuda()
 
-        filename = '0331_21:54:12.pth'
+        filename = '0331_21_54_12.pth'
         loadPath = os.path.join('textcnn', filename)
         model.load(loadPath)
 

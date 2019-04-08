@@ -1,15 +1,19 @@
+#coding=utf8
 import os
 import torch
+
+depressionfilename='depression_new.txt'
+normalfilename='normal_new.txt'
 
 def loadMyData(testrate=0.1):
     mydata=[]
     path='myset'
     #lable: 0 for depression, 1 for normal
-    with open(os.path.join(path, 'depression_seg.txt'), errors='ignore') as f:
+    with open(os.path.join(path, depressionfilename), encoding='utf-8', errors='ignore') as f:
         for line in f.readlines():
             line=line.split()
             mydata.append([line, 0])
-    with open(os.path.join(path, 'normal_seg.txt'), errors='ignore') as f:
+    with open(os.path.join(path, normalfilename), encoding='utf-8', errors='ignore') as f:
         for line in f.readlines():
             line=line.split()
             mydata.append([line, 1])
@@ -30,7 +34,7 @@ def loadMyData(testrate=0.1):
 
 def loaddict():
     path='myset'
-    with open(os.path.join(path, 'mydict.txt'), errors='ignore') as f:
+    with open(os.path.join(path, 'mydict.txt'), encoding='utf-8',errors='ignore') as f:
         mydict = f.read()
         mydict = eval(mydict)
     return mydict
@@ -92,7 +96,7 @@ def get_dataset_iter(args, data_name = "myset"):
 
 def loadlist():
     path='myset'
-    with open(os.path.join(path, 'mylist.txt'), errors='ignore') as f:
+    with open(os.path.join(path, 'mylist.txt'), encoding='utf-8', errors='ignore') as f:
         mylist = f.read()
         mylist = eval(mylist)
     return mylist
