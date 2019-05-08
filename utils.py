@@ -20,7 +20,7 @@ def get_common_args():
     parser.add_argument("-pretrain_embedding_path", type=str, default="myset/embedding.txt")  # 有已经训练好的embedding.txt文件
     parser.add_argument("--lr", type=float, default=0.001, help="Learning rate", required=False)
     parser.add_argument("--batch_size", type=int, default=128, help="Batch size", required=False)
-    parser.add_argument('--epochs', type=int, default=256, help='Number of training epochs', required=False)
+    parser.add_argument('--epochs', type=int, default=128, help='Number of training epochs', required=False)
     parser.add_argument('--hidden_dim', type=int, default=128, help='the hidden size', required=False)
     parser.add_argument('--embed_dim', type=int, default=128, help='the embedding dim of word embedding', required=False)  #原128，想改100
     parser.add_argument('--pretrain', type=bool, default=True, help='enable the pretrain embedding', required=False)

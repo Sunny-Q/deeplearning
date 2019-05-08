@@ -4,12 +4,17 @@ import torch
 
 depressionfilename='depression_new.txt'
 normalfilename='normal_new.txt'
+dp='normal_depression.txt'
 
-def loadMyData(testrate=0.1):
+def loadMyData(testrate=0.2):
     mydata=[]
     path='myset'
     #lable: 0 for depression, 1 for normal
     with open(os.path.join(path, depressionfilename), encoding='utf-8', errors='ignore') as f:
+        for line in f.readlines():
+            line=line.split()
+            mydata.append([line, 0])
+    with open(os.path.join(path, dp), encoding='utf-8', errors='ignore') as f:
         for line in f.readlines():
             line=line.split()
             mydata.append([line, 0])
@@ -22,7 +27,7 @@ def loadMyData(testrate=0.1):
     test=[]
 
     for i in range(len(mydata)):
-        if i%(int(100*testrate))==0:
+        if i%(int(100/(100*testrate)))==0:
             test.append(mydata[i])
         else:
             train.append(mydata[i])
@@ -86,7 +91,7 @@ def get_dataset_iter(args, data_name = "myset"):
     train_iter=torch.utils.data.DataLoader(trainSet,batch_size=args.batch_size,shuffle=True)
     test_iter = torch.utils.data.DataLoader(testSet, batch_size=args.batch_size, shuffle=False)
 
-    args.embed_num=12414+2
+    args.embed_num=23461+2
     args.embed_dim=100
     args.class_num=2
 

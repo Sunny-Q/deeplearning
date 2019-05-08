@@ -68,6 +68,8 @@ def mytest(model,val_iter,args,inputs_length=150):
     model.eval()
     corrects, avg_loss = 0.0, 0.0
     j = 0
+    all=0
+    error=0
     for (inputs,target) in val_iter:
         if args.cuda and args.device != -1:
             #inputs, inputs_length, target = inputs.cuda(), inputs_length.cuda(), target.cuda()
@@ -87,6 +89,9 @@ def mytest(model,val_iter,args,inputs_length=150):
                 #print(inputs.data[i])
                 print(int(target.data[i]))
                 id2word(inputs.data[i])
+                error+=1
+            all+=1
+    print((all-error)/all)
 
 
 
@@ -94,7 +99,7 @@ if __name__ == '__main__':
 
     args, unknown = get_common_args()
     # -1 means cpu, else the gpu index 0,1,2,3
-    args.device = -1
+    args.device = 1
     print("args : " + str(args))
     print("unknown args : " + str(unknown))
 
@@ -112,7 +117,7 @@ if __name__ == '__main__':
         train(model, train_iter, val_iter, args)
         model.save()
     else:
-        args.embed_num = 12414 + 2
+        args.embed_num = 23461 + 2
         args.embed_dim = 100
         args.class_num = 2
 
@@ -123,7 +128,7 @@ if __name__ == '__main__':
             torch.cuda.set_device(args.device)
             model = model.cuda()
 
-        filename = '0331_21_54_12.pth'
+        filename = '0428_14_40_41.pth'
         loadPath = os.path.join('textcnn', filename)
         model.load(loadPath)
 
